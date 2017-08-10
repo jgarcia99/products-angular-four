@@ -1,3 +1,20 @@
-<p>
-  products works!
-</p>
+<div class="row">
+  <div class="columns" id="search">
+    <h1>Products</h1>
+    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature
+    from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia</p>
+    <form #form="ngForm" (ngSubmit)="addProduct(form.value)">
+      <input type="text" placeholder="Product Name" name="title" [(ngModel)]="title">
+      <textarea rows="3" placeholder="Product description..." name="description" [(ngModel)]="description"></textarea>
+      <button type="submit" id="btn">Add Product</button>
+    </form>
+  </div>
+  <div class="columns" id="search">
+    <p id="results-label">{{ products.length }} Results </p>
+    <ul id="products-list">
+      <li [@productsAnim]="state" *ngFor="let product of products; let i = index">{{ product.title }} <img src="assets/delete.svg" (click)="removeProduct(i)" alt="">
+        <p>{{ product.description }}</p>
+      </li>
+    </ul>
+  </div>
+</div>
